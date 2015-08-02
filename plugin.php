@@ -11,6 +11,12 @@ Author URI: http://deluks.de/
 // No direct call
 if( !defined( 'YOURLS_ABSPATH' ) ) die();
 
+yourls_add_filter( 'get_shorturl_charset', 'deluks_burl_charset_addition' );
+
+function deluks_burl_charset_addition( $in ) {
+        return $in.'/'.'.';
+}
+
 function deluks_burl_keyword ( $keyword, $url, $title ) {
     /* get domain of the original url */
     $domainname = str_ireplace('www.', '', parse_url($url, PHP_URL_HOST));
@@ -25,3 +31,4 @@ function deluks_burl_keyword ( $keyword, $url, $title ) {
 }
 
 yourls_add_filter( 'random_keyword', 'deluks_burl_keyword' );
+
