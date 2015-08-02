@@ -13,15 +13,15 @@ if( !defined( 'YOURLS_ABSPATH' ) ) die();
 
 function deluks_burl_keyword ( $keyword, $url, $title ) {
     /* get domain of the original url */
-    $domainname = parse_url($url, PHP_URL_HOST);
+    $domainname = str_ireplace('www.', '', parse_url($url, PHP_URL_HOST));
 
     /* get file extension of original url */
     $file_extension = pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION);
 
     /* if there was a file extension, put a "." in front of it */
-    if (!empty($file_extension)) { $file_extension = "." . $file_extension; }
+    if (!empty($file_extension)) { $file_extension = '.' . $file_extension; }
 
-    return $domainname . "/" . $keyword . $file_extension;
+    return $domainname . '/' . $keyword . $file_extension;
 }
 
 yourls_add_filter( 'random_keyword', 'deluks_burl_keyword' );
