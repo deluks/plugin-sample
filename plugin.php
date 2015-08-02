@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: bURL
+Plugin Name: betterURL
 Plugin URI: http://github.com/deluks/burl
 Description: Includes original domainname and file extension in the shortened link
 Version: 1.0
